@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Прозорий фон</title>
+<style>
+body {
+  background: #ccc;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+/* 1️⃣ Псевдоелемент — прозорий тільки фон */
+.box1 {
+  position: relative;
+  color: white;
+  padding: 40px;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.box1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://picsum.photos/600/300") center/cover no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* 2️⃣ Напівпрозорий колір поверх фону */
+.box2 {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://picsum.photos/600/300?2") center/cover no-repeat;
+  color: white;
+  padding: 40px;
+  margin-bottom: 20px;
+}
+
+/* 3️⃣ Opacity для всього блоку */
+.box3 {
+  background: url("https://picsum.photos/600/300?3") center/cover no-repeat;
+  opacity: 0.5;
+  padding: 40px;
+  margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="box1">
+  <h2>1️⃣ Псевдоелемент</h2>
+  <p>Прозорий тільки фон, текст чіткий.</p>
+</div>
+
+<div class="box2">
+  <h2>2️⃣ Накладений градієнт</h2>
+  <p>Фон затемнений напівпрозорим кольором.</p>
+</div>
+
+<div class="box3">
+  <h2>3️⃣ Властивість opacity</h2>
+  <p>Прозорі і фон, і текст.</p>
+</div>
+
+</body>
+</html>
